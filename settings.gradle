@@ -1,2 +1,6 @@
-include ':app'
 rootProject.name = "WindowTracker"
+
+include ':app'
+
+include 'lib'
+project(':lib').projectDir = file('../CommonBase/lib')

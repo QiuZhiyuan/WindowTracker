@@ -9,5 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="accessibilityPermission"
-        android:text="@string/accessibility_permission" />
+        android:text="@string/accessibility_permission"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showTrackController"
+        android:text="@string/track_controller"
+        android:textAllCaps="false" />
 </LinearLayout>
