@@ -12,6 +12,8 @@ import android.provider.Settings;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -143,7 +145,16 @@ public abstract class FloatingWindowService extends Service implements
     }
 
     @NonNull
-    protected abstract View createWindowView();
+    protected View createWindowView() {
+        final View view = App.i().getLayoutInflater().inflate(getRootViewLayoutId(), null, false);
+        onWindowViewCreated(view);
+        return view;
+    }
+
+    protected abstract void onWindowViewCreated(@NonNull View root);
+
+    @LayoutRes
+    protected abstract int getRootViewLayoutId();
 
     @NonNull
     protected abstract SizeParams createSizeEntry();

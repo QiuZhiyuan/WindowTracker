@@ -1,24 +1,20 @@
 package com.qiu.window.tracker.controller;
 
-import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.qiu.base.lib.utils.App;
 import com.qiu.window.tracker.R;
 import com.qiu.window.tracker.service.FloatingWindowService;
 
 /**
  * 悬浮窗，控制跟踪/复现操作
  */
-public class GlobalTrackController extends FloatingWindowService {
+public class GlobalTrackController extends FloatingWindowService implements View.OnClickListener {
 
     @Nullable
     @Override
@@ -31,16 +27,24 @@ public class GlobalTrackController extends FloatingWindowService {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    @NonNull
     @Override
-    protected View createWindowView() {
-        return App.i().getLayoutInflater().inflate(R.layout.window_floating, null, false);
+    protected void onWindowViewCreated(@NonNull View root) {
+        final View startTracker = root.findViewById(R.id.start_tracker);
+        startTracker.setOnClickListener(this);
+        final View startSimulator = root.findViewById(R.id.start_simulator);
+        startSimulator.setOnClickListener(this);
+    }
+
+    @Override
+    protected int getRootViewLayoutId() {
+        return R.layout.layout_floating_window;
     }
 
     @NonNull
     @Override
     protected SizeParams createSizeEntry() {
-        return new SizeParams(100, 100, 0, 0);
+        return new SizeParams(WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT, 0, 0);
     }
 
     public void startTrack() {
@@ -49,5 +53,16 @@ public class GlobalTrackController extends FloatingWindowService {
 
     public void startSimulate() {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        final int id = v.getId();
+        switch (id) {
+            case R.id.start_tracker:
+                break;
+            case R.id.start_simulator:
+                break;
+        }
     }
 }

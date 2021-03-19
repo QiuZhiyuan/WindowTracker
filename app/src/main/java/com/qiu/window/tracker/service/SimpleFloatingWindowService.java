@@ -2,7 +2,6 @@ package com.qiu.window.tracker.service;
 
 import android.graphics.Color;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -16,6 +15,16 @@ public class SimpleFloatingWindowService extends FloatingWindowService {
         button.setBackgroundColor(Color.GRAY);
         button.setOnClickListener(v -> button.setText("Hello!!!"));
         return button;
+    }
+
+    @Override
+    protected void onWindowViewCreated(@NonNull View root) {
+
+    }
+
+    @Override
+    protected int getRootViewLayoutId() {
+        return 0;
     }
 
     @NonNull

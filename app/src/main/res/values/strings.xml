@@ -4,4 +4,8 @@
     <string name="accessibility_label">Auto Action Service</string>
     <string name="accessibility_permission">Accessibility Permission</string>
     <string name="track_controller">Track Controller</string>
+    <string name="todo">TODO</string>
+    <string name="tacker">Tacker</string>
+    <string name="simulator">Simulator</string>
+    <string name="menu">Menu</string>
 </resources>
